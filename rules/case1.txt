@@ -1,0 +1,46 @@
+when HTTP_REQUEST {
+   if { [HTTP::host] equals "bmp.xxxxxx.com.cn"} {
+    switch -glob [HTTP::path] {
+       "/smartbi*" {
+          pool Pool_bmp_smartbi_7083_1
+        }
+       "/mobile*" {
+          pool Pool_bmp_mobile_7088_1
+        }
+       "/voc*" {
+          pool Pool_bmp_voc_7081_1
+        }
+       "/rtmonitor*" {
+          pool Pool_bmp_rtmonitor_4560_1
+        }
+        default {
+          pool Pool_bmp_7083_1
+     }
+     }
+
+   } elseif { [HTTP::host] equals "bo.xxxxxx.com.cn"} {
+      switch -glob [HTTP::path] {
+      "/BOE*" {
+      pool Pool_bo_BOE_7082_1
+      }
+      "/bisp*" {
+      pool Pool_bo_bisp_7084_1
+      }
+      "/MobileBIService*" {
+      pool Pool_bo_MobileBIService_7081_1
+      }
+      "/dswsbobje*" {
+      pool Pool_bo_dswsbobje_7087_1
+      }
+      "/smartbi-mobile*" {
+      pool Pool_bo_smartbi-mobile_7086_1
+      }
+      default {
+      pool Pool_bo_BOE_7082_1
+      }
+    }
+   }
+}
+
+
+
