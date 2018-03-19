@@ -3,6 +3,7 @@
 import sys
 sys.path.append("..")
 import main_parser
+import main_parser_optimize as mpo
 
 def testParserCase1():
   main_parser.parserCase1()
@@ -29,6 +30,8 @@ def testMainParser():
 
 
 
+def testParserOp():
+ mpo.parserRules()
 
 
 

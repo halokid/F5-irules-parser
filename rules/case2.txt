@@ -1,23 +1,9 @@
-when HTTP_REQUEST {
-   if { [HTTP::host] equals "channel-staging-p.xxxxxx.com.cn"} {
-          # pool T_Pool_channel-staging-p
-          pool P_Pool_channel-staging-p_mobile_7081_7
-   } elseif { [HTTP::host] equals "gateway-staging-p.xxxxxx.com.cn"} {
-    switch -glob [HTTP::path] {
-   "/front*" {
-     pool P_Pool_gateway-staging-p_front_9000_7
-    }
-  "/api*" {
-     pool P_Pool_gateway-staging-p_api_6089_7
-    }
-      default {
-      pool T_Pool_gateway-staging-p
-      }
-  }
-   } elseif { [HTTP::host] equals "operation-staging-p.xxxxxx.com.cn"} {
-         pool P_Pool_operation-staging-p_7_7081
-  }
-}
-
-
+when CLIENT_ACCEPTED {
+if {[matchclass [IP::remote_addr] equals private_net]} {
+      pool Pool_adfs_xxxxxxxxxxxxxx_443_3
+   }
+else {
+      pool Pool_adfs_xxxxxxxxxxxxxxxxxx_e_443_3
+   }
+   }
 

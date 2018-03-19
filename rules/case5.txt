@@ -1,0 +1,195 @@
+when HTTP_REQUEST {
+  switch -glob [HTTP::path] {
+    "/gbss-trade*" {
+       if { [active_members Pool_gbss-trade_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-trade_front_1
+        }
+    }
+    "/gbss-kiosk*" {
+       if { [active_members Pool_gbss-kiosk_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-kiosk_1
+        }
+    }
+    "/gbss-report-front*" {
+       if { [active_members Pool_gbss-report-front_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-report-front_1
+        }
+    }
+    "/gbss-dealer-report*" {
+       if { [active_members Pool_gbss-report-front_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-report-front_1
+        }
+    }
+    "/gbss-dealer*" {
+       if { [active_members Pool_gbss-dealer_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-dealer_1
+        }
+    }
+    "/gbss-query*" {
+       if { [active_members Pool_gbss-query_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-query_1
+        }
+    }
+    "/gbss-esb*" {
+       if { [active_members Pool_gbss-esb_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-esb_1
+        }
+    }
+    "/gbss-report*" {
+       if { [active_members Pool_gbss-report-admin_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-report-admin_1
+        }
+    }
+    "/gbss-batch*" {
+       if { [active_members Pool_gbss-batch_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-batch_1
+        }
+    }
+    "/gbss-admin*" {
+       if { [active_members Pool_gbss-admin_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-admin_1
+        }
+    }
+    "/gbss-ds*" {
+       if { [active_members Pool_gbss-ds_7083_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-ds_7083_1
+        }
+    }
+    "/gbss-ls*" {
+       if { [active_members Pool_gbss-ls_7082_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-ls_7082_1
+        }
+    }
+    "/gbss-pos*" {
+       if { [active_members Pool_gbss-pos_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-pos_1
+        }
+    }
+    "/gbss-bupm*" {
+       if { [active_members Pool_gbss-bupm_7081_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-bupm_7081_1
+        }
+    }
+    "/gbss-mobile/front/gbss-mobile-newAccount/guest/pushClient/*" -
+    "/gbss-mobile/front/gbss-mobile-newAccount/account/pushClient/*" {
+       if { [active_members Pool_gbss-trade_admin_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+
+        }
+    }
+    "/gbss-mobile*" {
+       if { [active_members Pool_gbss-mobile_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-mobile_1
+        }
+    }
+    "/gbss-eic*" -
+    "/eicapp*" -
+    "/eicmobile*" -
+    "/eiceditor*" {
+       if { [active_members Pool_eic_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_eic_1
+        }
+    }
+    "/preview*" -
+    "/ewebeditor*" -
+    "/website-webapp*" {
+       if { [active_members Pool_eic_admin_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_eic_admin_1
+        }
+    }
+    "/gbss-otms/front*" -
+    "/gbss-otms/views*/front*" -
+    "/gbss-otms/resources*/front*" {
+       if { [active_members Pool_gbss-otms-front_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-otms-front_1
+        }
+    }
+    "/gbss-otms/admin*" -
+    "/gbss-otms/views*/admin*" -
+    "/gbss-otms/resources*/admin*" {
+       if { [active_members Pool_gbss-otms-admin_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-otms-admin_1
+        }
+    }
+    "/gbss-otms*" {
+       if { [active_members Pool_gbss-otms-admin_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-otms-admin_1
+        }
+    }
+    "/wechat-report-front*" {
+       if { [active_members Pool_gbss_wechat-report-front_7081_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss_wechat-report-front_7081_1
+        }
+    }
+    "/emcs-report-front*" {
+       if { [active_members Pool_gbss_emcs-report-front_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss_emcs-report-front_1
+        }
+    }
+    "/emcs-report-admin*" {
+       if { [active_members Pool_gbss_emcs-report-admin_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss_emcs-report-admin_1
+        }
+    }
+    default {
+       if { [active_members Pool_gbss-portal_7081_1] == 0 } {
+          pool Pool_gbss-maintain_80_1
+        } else {
+          pool Pool_gbss-portal-front_7081_1
+        }
+    }
+  }
+}
+
+
+
+
+
+

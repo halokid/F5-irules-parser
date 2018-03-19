@@ -1,0 +1,14 @@
+when CLIENT_ACCEPTED {
+   set MYPORT [TCP::local_port]
+   switch MYPORT {
+        80 {
+              pool OAPool_develop_xxxxxxxx-int-80
+	    }
+        443 {
+              pool OAPool_develop_xxxxxxxx-int-443
+	    }
+        default {
+		pool OAPool_develop_xxxxxxxx-int-0
+		}
+   }
+}

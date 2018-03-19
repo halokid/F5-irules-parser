@@ -1,0 +1,28 @@
+when HTTP_REQUEST {
+   if { ([HTTP::host] equals "3d.xxxxxxxx.com.cn") } {
+       pool Pool_3d_infinitus_80_3
+   } elseif { [HTTP::host] equals "aaaa.xxxxxxxxxxx.com.cn"} {
+       pool Pool_3d_infinitus_80_3
+   } elseif { [HTTP::host] equals "m.xxxxxxxxxxs.com.cn"} {
+#       pool Pool_m_infinitus_80_3
+ HTTP::redirect "https://www.xxxxxxxxxxx.com.cn[HTTP::uri]"
+   } elseif { [HTTP::host] equals "wap.xxxxxxxxxxx.com.cn"} {
+    #   pool Pool_m_infinitus_80_3
+ HTTP::redirect "https://www.xxxxxxxxxx.com.cn[HTTP::uri]"
+   } elseif { [HTTP::host] equals "wwwimg.xxxxxxxx.com.cn"} {
+       pool Pool_wwwimg_xxxxxxxxx_80_3
+   } elseif { [HTTP::host] equals "wwwspace.xxxxxxxxxx.com.cn"} {
+       pool Pool_wwwimg_xxxxxxxxx_80_3
+  } elseif { [HTTP::host] equals "www.xxxxxxxxx.com.cn"} {
+           switch -glob [HTTP::path] {
+           "/front*" {
+                pool Pool_xxxxxxxxxx_front_88_3
+           }
+               default {
+           pool Pool_ixxxxxxxxus_3
+           }
+       }
+   } else {
+       pool Pool_ixxxxxxxxxxxs_3
+   }
+}
